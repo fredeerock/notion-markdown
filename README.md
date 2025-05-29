@@ -8,6 +8,7 @@ This project automatically syncs content from a Notion database to a Jekyll stat
 - 📝 Supports paragraphs, headings, lists, to-dos, and images
 - 🏠 Special "Home" page type for homepage content
 - 🧭 Automatic navigation for pages marked as "Page" type
+- 🗑️ **Automatic cleanup** - Deleted/renamed pages in Notion are removed from the site
 - ⚡ Runs on GitHub Pages for free
 
 ## Setup Instructions
@@ -83,8 +84,25 @@ Your site will be available at: `https://YOUR_USERNAME.github.io/YOUR_REPOSITORY
    - Pages with Type "Home" become `index.md` (homepage)
    - Pages with Type "Page" go in `_pages/` folder and appear in navigation
    - Other pages go in `_pages/` but don't appear in navigation
+   - **Automatically removes** old markdown files when pages are deleted/renamed in Notion
 3. **Jekyll** builds the static site from markdown files
 4. **GitHub Pages** serves your site
+
+## Content Management
+
+### Adding Pages
+- Create new pages in your Notion database
+- Set the "Type" property to "Home" or "Page" as needed
+- Content appears on your site within 5 minutes
+
+### Updating Pages
+- Edit content directly in Notion
+- Changes sync automatically to your site
+
+### Deleting/Renaming Pages
+- When you delete a page from Notion, it's automatically removed from your site
+- When you rename a page in Notion, the old file is deleted and a new one is created
+- This prevents orphaned content from cluttering your site
 
 ## Customization
 
