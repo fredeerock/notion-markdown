@@ -1,4 +1,5 @@
 import os
+import glob
 from notion_client import Client
 from markdownify import markdownify as md
 from dotenv import load_dotenv
@@ -15,6 +16,10 @@ notion = Client(auth=NOTION_TOKEN)
 results = notion.databases.query(database_id=NOTION_DATABASE_ID)["results"]
 
 os.makedirs("_pages", exist_ok=True)
+
+# Track which files should exist after processing
+expected_files = set()
+has_home_page = False
 
 for page in results:
     props = page["properties"]
@@ -47,15 +52,40 @@ for page in results:
         return ""
 
     content = "\n\n".join([block_to_md(block) for block in blocks if block_to_md(block)])
+    
     # Home page logic
     if type_val == "Home":
         out_path = os.path.join(os.path.dirname(__file__), '../../index.md')
+        expected_files.add('index.md')
+        has_home_page = True
         with open(out_path, "w") as f:
             f.write(f"---\ntitle: {title}\nlayout: default\ntype: {type_val}\n---\n\n{content}")
     else:
         filename = f"{title.replace(' ', '_').lower()}.md"
+        expected_files.add(f'_pages/{filename}')
         with open(f"_pages/{filename}", "w") as f:
             f.write(f"---\ntitle: {title}\nlayout: default\ntype: {type_val}\n---\n\n{content}")
     print(f"Processing: {title}")
     print(f"Blocks: {blocks}")
     print(f"Generated content for {title}:\n{content}")
+
+# Clean up orphaned files
+print("\n--- Cleaning up orphaned files ---")
+
+# Get all existing markdown files
+existing_page_files = set(glob.glob("_pages/*.md"))
+index_exists = os.path.exists("index.md")
+
+# Remove orphaned files in _pages/
+for existing_file in existing_page_files:
+    if existing_file not in expected_files:
+        print(f"Removing orphaned file: {existing_file}")
+        os.remove(existing_file)
+
+# Handle index.md - remove if no Home page exists in Notion
+if index_exists and not has_home_page:
+    print("Removing orphaned index.md (no Home page in Notion)")
+    os.remove("index.md")
+
+print(f"Expected files: {expected_files}")
+print(f"Processing complete!")
