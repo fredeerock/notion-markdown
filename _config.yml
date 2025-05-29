@@ -1,3 +1,5 @@
+remote_theme: poole/lanyon
+
 title: Notion Markdown Site
 markdown: kramdown
 permalink: pretty
