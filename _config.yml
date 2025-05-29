@@ -1,4 +1,4 @@
-remote_theme: poole/lanyon
+theme: hacker
 
 title: Notion Markdown Site
 markdown: kramdown
