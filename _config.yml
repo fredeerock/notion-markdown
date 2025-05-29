@@ -1,0 +1,8 @@
+title: Notion Markdown Site
+markdown: kramdown
+permalink: pretty
+exclude: [".github"]
+collections:
+  pages:
+    output: true
+    permalink: /:path/

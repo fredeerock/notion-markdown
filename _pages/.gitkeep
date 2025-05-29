@@ -1,0 +1,2 @@
+# This folder will contain all markdown pages generated from Notion
+# Jekyll will treat files in here as pages if you configure it in _config.yml
