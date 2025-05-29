@@ -1,7 +1,7 @@
 ---
-title: Fo
+title: Fi
 layout: default
-type: Home
+type: Page
 ---
 
-yeah
+hiyo
