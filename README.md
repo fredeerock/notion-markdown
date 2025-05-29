@@ -24,8 +24,9 @@ Fork this repository or use it as a template for your new GitHub repository.
 3. Give it a name and select your workspace
 4. Copy the **Internal Integration Token** (starts with `ntn_`)
 5. In your Notion database:
-   - Click "Share" in the top right
-   - Click "Invite" and add your integration
+   - Click the three dots menu (•••) in the top right
+   - Go to "Connections" 
+   - Add your integration
 
 ### 3. Get Your Notion Database ID
 
