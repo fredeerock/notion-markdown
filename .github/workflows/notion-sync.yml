@@ -18,7 +18,7 @@ jobs:
           python-version: '3.x'
 
       - name: Install dependencies
-        run: pip install notion-client markdownify
+        run: pip install notion-client markdownify python-dotenv
 
       - name: Fetch Notion database and convert to markdown
         env:
