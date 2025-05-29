@@ -3,6 +3,8 @@ plugins:
 - jekyll-remote-theme
 
 title: Notion Markdown Site
+baseurl: "/notion-markdown"
+url: "https://fredeerock.github.io"
 markdown: kramdown
 permalink: pretty
 exclude: [".github", "venv"]

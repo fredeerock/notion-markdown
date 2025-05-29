@@ -11,9 +11,10 @@
 </head>
 <body>
   <nav>
+    <a href="{{ '/' | relative_url }}" {% if page.url == '/' %}class="active"{% endif %}>Home</a>
     {% assign nav_pages = site.pages | where: "type", "Page" %}
     {% for p in nav_pages %}
-      <a href="{{ p.url }}" {% if page.url == p.url %}class="active"{% endif %}>{{ p.title }}</a>
+      <a href="{{ p.url | relative_url }}" {% if page.url == p.url %}class="active"{% endif %}>{{ p.title }}</a>
     {% endfor %}
   </nav>
   <main>
