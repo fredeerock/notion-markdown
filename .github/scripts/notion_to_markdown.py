@@ -62,9 +62,10 @@ for page in results:
             f.write(f"---\ntitle: {title}\nlayout: default\ntype: {type_val}\n---\n\n{content}")
     else:
         filename = f"{title.replace(' ', '_').lower()}.md"
+        permalink_name = title.replace(' ', '_').lower()
         expected_files.add(f'_pages/{filename}')
         with open(f"_pages/{filename}", "w") as f:
-            f.write(f"---\ntitle: {title}\nlayout: default\ntype: {type_val}\n---\n\n{content}")
+            f.write(f"---\ntitle: {title}\nlayout: default\ntype: {type_val}\npermalink: /{permalink_name}/\n---\n\n{content}")
     print(f"Processing: {title}")
     print(f"Blocks: {blocks}")
     print(f"Generated content for {title}:\n{content}")

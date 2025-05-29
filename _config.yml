@@ -5,8 +5,8 @@ plugins:
 title: Notion Markdown Site
 markdown: kramdown
 permalink: pretty
-exclude: [".github"]
+exclude: [".github", "venv"]
 collections:
   pages:
     output: true
-    permalink: /:path/
+    permalink: /:name/

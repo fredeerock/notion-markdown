@@ -2,6 +2,7 @@
 title: Fe
 layout: default
 type: Page
+permalink: /fe/
 ---
 
 Three. sup sup sup.
