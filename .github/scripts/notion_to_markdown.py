@@ -24,7 +24,14 @@ has_home_page = False
 for page in results:
     props = page["properties"]
     title = props["Title"]["title"][0]["plain_text"] if props["Title"]["title"] else "Untitled"
-    type_val = props.get("Type", {}).get("select", {}).get("name", "")
+    
+    # Safely get the Type property with proper null checking
+    type_prop = props.get("Type", {})
+    if type_prop and type_prop.get("select"):
+        type_val = type_prop["select"].get("name", "")
+    else:
+        type_val = ""
+    
     page_id = page["id"]
     blocks = notion.blocks.children.list(block_id=page_id)["results"]
 
