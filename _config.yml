@@ -2,12 +2,22 @@
 # plugins:
 # - jekyll-remote-theme
 
+theme: minima
 title: Notion Markdown Site
 baseurl: "/notion-markdown"
 url: "https://fredeerock.github.io"
 markdown: kramdown
 permalink: pretty
 exclude: [".github", "venv"]
+
+# Configure Minima to show header pages
+header_pages:
+  - index.md
+  - _pages/fe.md
+  - _pages/fi.md
+  - _pages/fum.md
+  - _pages/giant.md
+
 collections:
   pages:
     output: true
