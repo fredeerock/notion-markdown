@@ -1,4 +1,4 @@
-theme: minima
+# theme: minima
 title: Notion Markdown Site
 baseurl: "/notion-markdown"
 url: "https://fredeerock.github.io"

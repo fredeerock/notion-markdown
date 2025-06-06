@@ -126,6 +126,63 @@ Edit `_layouts/default.html` to change the appearance of your site.
 
 Edit `.github/scripts/notion_to_markdown.py` to support additional Notion block types (quotes, code blocks, etc.).
 
+## Script Versions
+
+This project includes two different Python scripts for syncing Notion content:
+
+| Feature | Ultimate-Notion Version | Standard Library Version |
+|---------|------------------------|--------------------------|
+| **File** | `notion_to_markdown.py` | `notion_to_markdown_stdlib.py` |
+| **Workflow** | `notion-sync.yml` | `notion-sync-stdlib.yml` |
+| **Dependencies** | `ultimate-notion`, `python-dotenv` | None (stdlib only) |
+| **Code Length** | ~80 lines | ~330 lines |
+| **Maintenance** | Easier (library handles complexity) | More complex (manual API handling) |
+| **Reliability** | High (tested library) | Good (custom implementation) |
+| **Environment** | Needs pip install | Works anywhere Python runs |
+
+### Ultimate-Notion Version (Default - Recommended)
+**File**: `.github/scripts/notion_to_markdown.py`
+
+- ✅ Cleaner, more maintainable code
+- ✅ Robust error handling via tested library
+- ✅ Automatic markdown conversion optimizations
+- ✅ Better support for complex Notion content
+- ❌ Requires external dependencies
+
+### Standard Library Version (Zero Dependencies)
+**File**: `.github/scripts/notion_to_markdown_stdlib.py`
+
+- ✅ **Zero external dependencies** - works in any Python environment
+- ✅ Self-contained and portable
+- ✅ Full control over API interactions
+- ✅ Educational value (see how Notion API works)
+- ❌ More verbose code to maintain
+- ❌ Manual handling of edge cases
+
+### Switching Between Versions
+
+To use the **standard library version**:
+
+1. Update your workflow file (`.github/workflows/notion-sync.yml`):
+   ```yaml
+   # Remove the pip install line:
+   # - run: pip install ultimate-notion python-dotenv
+   
+   # Change the script execution:
+   - run: python .github/scripts/notion_to_markdown_stdlib.py
+   ```
+
+2. Or use the alternative workflow:
+   ```bash
+   # Disable current workflow
+   mv .github/workflows/notion-sync.yml .github/workflows/notion-sync-ultimate.yml.disabled
+   
+   # Enable stdlib workflow  
+   mv .github/workflows/notion-sync-stdlib.yml .github/workflows/notion-sync.yml
+   ```
+
+**Both versions provide identical functionality** - choose based on your preference for dependencies vs. code simplicity.
+
 ## Troubleshooting
 
 ### Action Fails with "KeyError"
