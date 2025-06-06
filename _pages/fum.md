@@ -5,4 +5,6 @@ type: Page
 permalink: /fum/
 ---
 
+# Fum
+
 yeeeeees

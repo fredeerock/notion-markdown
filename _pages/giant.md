@@ -5,4 +5,6 @@ type:
 permalink: /giant/
 ---
 
+# Giant
+
 Yep
