@@ -1,20 +1,17 @@
 ---
 title: Fi
 layout: default
-type: 
+type: Page
 permalink: /fi/
 ---
 
 # Fi
 
-## hiyo
+# hiyo
+
 stuff
-- hi
 
 - hi
-
 - hi
-
+- hi
 [boom](http://nyt.com/)
-
-
